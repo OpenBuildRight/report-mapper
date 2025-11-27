@@ -16,6 +16,8 @@ export const authClient = createAuthClient({
     ],
 });
 
+export type Session = typeof authClient.$Infer.Session;
+
 export function SessionProvider({ children }: { children: React.ReactNode }) {
   // better-auth handles sessions through React hooks, no provider needed
   return <>{children}</>;
