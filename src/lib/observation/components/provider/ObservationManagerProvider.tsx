@@ -7,17 +7,21 @@ import {getObservationsAction} from "@/lib/observation/actions/observation-actio
 
 export const ObservationManagerProvider: React.FC<{children: React.ReactNode}> = ({children}) => {
     const getObservations = useCallback(
-        // ToDo: Deal with async promise properly.
-        ({location, createdById, published} : ObservationQuery) => getObservationsAction({location, createdById, published}),
+        ({location, createdById, published} : ObservationQuery) => {
+            return getObservationsAction({location, createdById, published});
+        },
         []
     );
+
     const actions = useMemo(() => ({getObservations}), [getObservations]);
-    const manager = useMemo(() => {
-        return {actions};
-    }, [actions]);
+
+    const manager = useMemo(() => ({
+        actions
+    }), [actions]);
+
     return (
-        <ObservationManagerContext value={manager}>
+        <ObservationManagerContext.Provider value={manager}>
             {children}
-        </ObservationManagerContext>
-    )
+        </ObservationManagerContext.Provider>
+    );
 }
