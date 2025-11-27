@@ -126,6 +126,6 @@ export const locationQuerySchema = z.discriminatedUnion("type", [
  */
 export const observationQuerySchema = z.object({
   location: locationQuerySchema.optional(),
-  createdBy: z.string().optional(), // User ID filter
+  createdById: z.string().optional(), // User ID filter
   published: z.boolean().optional(),
 });

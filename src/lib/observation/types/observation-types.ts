@@ -17,11 +17,11 @@ export type ObservationFormData = z.infer<typeof observationFormDataSchema>;
 export type ObservationPhoto = z.infer<typeof observationPhotoSchema>;
 export type ObservationCreatedBy = z.infer<typeof observationCreatedBySchema>;
 export type Observation = z.infer<typeof observationSchema>;
-export type ObservationQuerySchema = z.infer<typeof observationQuerySchema>;
+export type ObservationQuery = z.infer<typeof observationQuerySchema>;
 
 
 export interface ObservationManagerActions {
-    getObservations: ({location, createdBy, published}: ObservationQuerySchema) => Promise<Observation[]>;
+    getObservations: ({location, createdById, published}: ObservationQuery) => Promise<Observation[]>;
 }
 
 export interface ObservationManager {
